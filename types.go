@@ -13,7 +13,7 @@ import (
 	"helm.sh/helm/v3/pkg/postrender"
 	"helm.sh/helm/v3/pkg/repo"
 
-	"github.com/mittwald/go-helm-client/values"
+	"github.com/k8s-tools-collection/go-helm-client/values"
 )
 
 // Type Guard asserting that HelmClient satisfies the HelmClient interface.
@@ -85,6 +85,14 @@ type HelmClient struct {
 	linting      bool
 	output       io.Writer
 	DebugLog     action.DebugLog
+}
+
+func (c *HelmClient) GetSettings() *cli.EnvSettings {
+	return c.Settings
+}
+
+func (c *HelmClient) GetProviders() getter.Providers {
+	return c.Providers
 }
 
 type GenericHelmOptions struct {
