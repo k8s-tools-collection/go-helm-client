@@ -87,6 +87,11 @@ type HelmClient struct {
 	DebugLog     action.DebugLog
 }
 
+func (c *HelmClient) AddProviders(providers getter.Providers) getter.Providers {
+	c.Providers = append(c.Providers, providers...)
+	return c.Providers
+}
+
 func (c *HelmClient) GetSettings() *cli.EnvSettings {
 	return c.Settings
 }

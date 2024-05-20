@@ -27,6 +27,7 @@ type Client interface {
 	GetReleaseValues(name string, allValues bool) (map[string]interface{}, error)
 	GetSettings() *cli.EnvSettings
 	GetProviders() getter.Providers
+	AddProviders(getter.Providers) getter.Providers
 	UninstallRelease(spec *ChartSpec) error
 	UninstallReleaseByName(name string) error
 	TemplateChart(spec *ChartSpec, options *HelmTemplateOptions) ([]byte, error)
